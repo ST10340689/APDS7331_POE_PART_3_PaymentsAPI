@@ -21,5 +21,8 @@
     "sanitize-html": "^2.17.3",
     "uuid": "^14.0.0",
     "validator": "^13.15.35"
+  },
+  "overrides": {
+    "underscore": "^1.13.8"
   }
 }
