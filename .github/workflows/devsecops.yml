@@ -45,18 +45,24 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          cd payments-api
+          npm install
 
       - name: Run tests
-        run: npm test --if-present
+        run: |
+          cd payments-api
+          npm test --if-present
 
       - name: Security audit
-        run: npm audit --audit-level=high
+        run: |
+          cd payments-api
+          npm audit --audit-level=high
 
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@v2
         with:
-          projectBaseDir: .
+          projectBaseDir: payments-api
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: "http://localhost:9000"
+          SONAR_HOST_URL: "https://sonarcloud.io"
